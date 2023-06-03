@@ -6,7 +6,7 @@ build-backend = "maturin"
 name = "rs-distances"
 description = "A Python module implemented in Rust for efficient calculations"
 authors = [{name = "Flynn OConnell", email = "flynnoconnell@gmail.com"}]
-#readme = "readme.md"
+readme = "README.md"
 homepage = "https://github.com/NeuroPyPy/rs-distances"
 license = "MIT"
 requires-python = ">=3.7"
@@ -21,7 +21,7 @@ classifiers = [
 features = ["pyo3/extension-module"]
 
 [package]
-version = "0.1.0"
+version = "0.3.0"
 edition = "2018"
 
 [package.metadata.maturin]
