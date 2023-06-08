@@ -12,6 +12,15 @@ This repository contains a set of functions implemented in Rust for the purpose 
 
 <br>
 
+* <a href=https://journals.physiology.org/doi/abs/10.1152/jn.1996.76.2.1310> Nature and precision of temporal coding in visual cortex: a metric-space analysis. Victor & Purpura (1996)</a>
+* <a href="https://www.tandfonline.com/doi/abs/10.1088/0954-898X_8_2_003"> Metric space analysis of spike trains: theory, algorithms and application. Victor & Purpura (1997) </a>
+
+<br>
+
+For a full walkthrough of cost-based metrics, see Jonathon Victor's <a href="http://www-users.med.cornell.edu/~jdvicto/metricdf.html#introduction"> website: </a> 
+
+<br>
+
 ## Installation
 This package is bundled with the [metricspace](https://github.com/NeuroPyPy/metricspace) repository.
 It can also be installed separately using the following command:
