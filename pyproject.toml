@@ -16,12 +16,11 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 
-
 [tool.maturin]
 features = ["pyo3/extension-module"]
 
 [package]
-version = "0.4.0"
+version = "0.8.0"
 edition = "2023"
 
 [package.metadata.maturin]
