@@ -9,7 +9,6 @@ This repository contains a set of functions implemented in Rust for the purpose 
 [![implementation](https://img.shields.io/pypi/implementation/rs-distances)](https://img.shields.io/pypi/implementation/rs-distances?style=plastic)
 [![license](https://img.shields.io/pypi/l/rs-distances)](https://img.shields.io/pypi/l/rs-distances?style=plastic)
 [![format](https://img.shields.io/pypi/format/rs-distances)](https://img.shields.io/pypi/format/rs-distances?style=plastic)
-[![downloads](https://img.shields.io/pypi/dd/rs-distances)](https://img.shields.io/pypi/dd/rs-distances?style=plastic)
 
 <br>
 
