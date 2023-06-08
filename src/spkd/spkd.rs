@@ -2,7 +2,6 @@ use ndarray::Array2;
 use ndarray::{s, Array1, Array3, ArrayBase, ArrayView3, Dim, OwnedRepr};
 use numpy::{IntoPyArray, PyArray1};
 use pyo3::{prelude::*, types::PyList};
-use rayon::prelude::*;
 
 pub fn iterate_spiketrains(scr: &mut Array3<f64>, sd: &ArrayView3<f64>) {
     let (num_qvals, num_spikes_xii, num_spikes_xjj) = scr.dim();
