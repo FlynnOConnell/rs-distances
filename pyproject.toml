@@ -12,8 +12,11 @@ license = "MIT"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
 ]
 
 [tool.maturin]
@@ -31,3 +34,8 @@ requires-dist = ["numpy"]
 ndarray = "0.15.4"
 numpy = "0.14.1"
 pyo3 = { version = "0.15.1", features = ["extension-module"] }
+
+[project.urls]
+homepage = "https://github.com/NeuroPyPy/rs-distances"
+repository = "https://github.com/NeuroPyPy/rs-distances"
+documentation = "http://www-users.med.cornell.edu/~jdvicto/metricdf.html#algorithm"
