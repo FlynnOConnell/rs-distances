@@ -13,11 +13,6 @@ numpy = "0.19.0"
 ndarray = "0.15.3"
 pyo3 = { version = "0.19.0", features = ["extension-module"] }
 maturin = "1.0.1"
-itertools = "0.10.0"
 log = "0.4.14"
 env_logger = "0.9"
-serde = { version = "1.0.130", features = ["derive"] } 
-
-[[test]]
-name = "tests"
-path = "test/tests.rs"
+rayon = "1.5.1"

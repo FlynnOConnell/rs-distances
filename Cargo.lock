@@ -1678,13 +1678,12 @@ name = "rs-distances"
 version = "0.6.0"
 dependencies = [
  "env_logger",
- "itertools",
  "log",
  "maturin",
  "ndarray",
  "numpy",
  "pyo3",
- "serde",
+ "rayon",
 ]
 
 [[package]]
