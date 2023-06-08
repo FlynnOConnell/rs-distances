@@ -7,7 +7,7 @@ advantage of Rust's efficient memory management and computational capabilities.
 
 https://img.shields.io/pypi/v/rs-distances?style=plastic
 
-https://img.shields.io/pypi/wheel/rs-distances
+[https://img.shields.io/pypi/wheel/rs-distances](https://img.shields.io/pypi/wheel/rs-distances?style=plastic)
 
 [![CI](https://github.com/NeuroPyPy/rs-distances/actions/workflows/CI.yml/badge.svg)](https://github.com/NeuroPyPy/rs-distances/actions/workflows/CI.yml)
 
