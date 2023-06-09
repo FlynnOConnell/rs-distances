@@ -29,6 +29,11 @@ venv/
 *.egg-info/
 .installed.cfg
 *.egg
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.idea/
+.vscode/
 
 # Installer logs
 pip-log.txt

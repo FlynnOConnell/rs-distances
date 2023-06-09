@@ -3,15 +3,19 @@ use ndarray::{s, Array1, Array3, ArrayBase, ArrayView3, Dim, OwnedRepr};
 use numpy::{IntoPyArray, PyArray1};
 use pyo3::{prelude::*, types::PyList};
 
+// Most of our performance boost comes from this calculation which is the
+// computation of pairwise distances between two spike trains.
 pub fn iterate_spiketrains(scr: &mut Array3<f64>, sd: &ArrayView3<f64>) {
     let (num_qvals, num_spikes_xii, num_spikes_xjj) = scr.dim();
+    // First spike train
     for xii in 1..num_spikes_xii {
+        // Second spike train
         for xjj in 1..num_spikes_xjj {
+            // For each q value
             for q in 0..num_qvals {
-                let a = scr[[q, xii - 1, xjj]] + 1.0;
-                let b = scr[[q, xii, xjj - 1]] + 1.0;
-                let c = scr[[q, xii - 1, xjj - 1]] + sd[[q, xii - 1, xjj - 1]];
-
+                let a: f64 = scr[[q, xii - 1, xjj]] + 1.0;
+                let b: f64 = scr[[q, xii, xjj - 1]] + 1.0;
+                let c: f64 = scr[[q, xii - 1, xjj - 1]] + sd[[q, xii - 1, xjj - 1]];
                 scr[[q, xii, xjj]] = a.min(b.min(c));
             }
         }
@@ -25,7 +29,6 @@ pub fn calculate_pairwise_distances(
     num_qvals: usize,
     d: &mut ArrayBase<OwnedRepr<f64>, Dim<[usize; 3]>>,
 ) {
-
     for xi in 0..numt - 1 {
         for xj in xi + 1..numt {
             let curcounts_xi: usize = cspks[xi].len();
@@ -73,7 +76,8 @@ fn calculate_spkd(py: Python, cspks: &PyList, qvals: &PyArray1<f64>) -> PyResult
     let mut cspk_vectors: Vec<Array1<f64>> = Vec::new();
     let mut num_vectors: usize = 0;
 
-    // Iterate over the spike trains and convert them to ndarrays
+    // Convert the PyList to a Vec<Array1<f64>> to simulate the python 
+    // equivalent of a list of numpy arrays
     for pyarray in cspks.iter() {
         let numpy_array: &PyArray1<f64> = pyarray.extract()?;
         let array: Array1<f64> = numpy_array.to_owned_array();
@@ -82,7 +86,6 @@ fn calculate_spkd(py: Python, cspks: &PyList, qvals: &PyArray1<f64>) -> PyResult
         if shape.is_empty() || shape[0] == 0 {
             continue; // Skip empty arrays
         }
-
         num_vectors += 1;
         cspk_vectors.push(array);
     }
@@ -112,7 +115,7 @@ pub fn calculate_spkd_impl(
 
     let mut d: ArrayBase<OwnedRepr<f64>, Dim<[usize; 3]>> =
         Array3::<f64>::zeros((numt, numt, num_qvals));
-    
+
     calculate_pairwise_distances(numt, cspks, qvals, num_qvals, &mut d);
 
     // Transpose d
@@ -121,29 +124,9 @@ pub fn calculate_spkd_impl(
     d
 }
 
-#[pyclass]
-struct Version {
-    version: String,
-}
-
-#[pymethods]
-impl Version {
-    #[getter]
-    fn version(&self) -> PyResult<String> {
-        Ok(self.version.clone())
-    }
-    #[new]
-    fn new() -> Self {
-        Version {
-            version: env!("CARGO_PKG_VERSION").to_string(),
-        }
-    }
-}
-    
 #[pymodule]
 fn rs_distances(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(calculate_spkd)).unwrap();
-    m.add_class::<Version>()?;
     Ok(())
 }
 
