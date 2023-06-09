@@ -121,9 +121,29 @@ pub fn calculate_spkd_impl(
     d
 }
 
+#[pyclass]
+struct Version {
+    version: String,
+}
+
+#[pymethods]
+impl Version {
+    #[getter]
+    fn version(&self) -> PyResult<String> {
+        Ok(self.version.clone())
+    }
+    #[new]
+    fn new() -> Self {
+        Version {
+            version: env!("CARGO_PKG_VERSION").to_string(),
+        }
+    }
+}
+    
 #[pymodule]
 fn rs_distances(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(calculate_spkd)).unwrap();
+    m.add_class::<Version>()?;
     Ok(())
 }
 

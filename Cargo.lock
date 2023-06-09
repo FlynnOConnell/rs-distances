@@ -1675,7 +1675,7 @@ dependencies = [
 
 [[package]]
 name = "rs-distances"
-version = "0.8.0"
+version = "0.8.1"
 dependencies = [
  "env_logger",
  "log",

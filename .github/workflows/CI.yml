@@ -8,10 +8,14 @@ name: CI
 on:
   push:
     branches:
-      - main
       - master
     tags:
       - '*'
+    paths:
+      - 'src/**'
+      - 'Cargo.toml'
+      - '.github/workflows/CI.yml'
+      - 'rs-distances.pyi'
   pull_request:
   workflow_dispatch:
 
