@@ -1,3 +1,10 @@
+## This repository has been merged with the [metricspace](https://github.com/NeuroPyPy/metricspace) repository, updates will be provided there.
+
+<br> 
+
+<br> 
+
+
 <h1> Rust Functions for Metric Space Analysis </h1>
 
 This repository contains a set of functions implemented in Rust for the purpose of metric space analysis. These functions aim to provide superior performance by taking advantage of Rust's efficient memory management and computational capabilities.
